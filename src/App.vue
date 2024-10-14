@@ -4,12 +4,13 @@ import LogInOut from './components/LogInOut.vue';
 </script>
 
 <template>
-  <h1 class="text-2xl">Template principale (Menu/Footer...)</h1>
+  <h1 class="text-2xl">Portfolio</h1>
   <LogInOut/>
   <nav>
     <ul>
-      <RouterLink to="/">Accueil</RouterLink>
-      <RouterLink to="/about">À propos</RouterLink>
+        <li><RouterLink to="/">Accueil</RouterLink></li>
+        <li><RouterLink to="/about">À propos</RouterLink></li>
+        <li><RouterLink to="/projets">Projets</RouterLink></li>
     </ul>
   </nav>
   
