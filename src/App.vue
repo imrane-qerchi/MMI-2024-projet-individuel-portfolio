@@ -4,7 +4,6 @@ import LogInOut from './components/LogInOut.vue';
 </script>
 
 <template>
-  <h1 class="text-2xl">Portfolio</h1>
   <LogInOut/>
   <nav>
     <ul>

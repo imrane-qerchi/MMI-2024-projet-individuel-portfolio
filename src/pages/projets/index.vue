@@ -8,7 +8,7 @@ const listeProjets = await pb.collection('projets').getFullList();
 
 <template>
 
-  <h1 class="text-2xl">Projets</h1>
+  <h1 class="text-2xl">Mes projets</h1>
   
   <ul>
     <li v-for="projet in listeProjets" :key="projet.id">{{ projet.nom }}</li>
