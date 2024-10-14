@@ -9,7 +9,8 @@ import LogInOut from './components/LogInOut.vue';
     <ul>
         <li><RouterLink to="/">Accueil</RouterLink></li>
         <li><RouterLink to="/about">À propos</RouterLink></li>
-        <li><RouterLink to="/projets">Projets</RouterLink></li>
+        <li><RouterLink to="/projets">Mes projets</RouterLink></li>
+        <li><RouterLink to="/contact">Contact</RouterLink></li>
     </ul>
   </nav>
   
