@@ -1,4 +1,9 @@
-# template-vue-pocketbase
+# Portfolio - Imrane QERCHI
+
+- NOM : QERCHI
+- PRÉNOM : Imrane
+- URL du site : https://imrane-qerchi.fr/
+- URL FIGMA : https://www.figma.com/design/tQ2ZZ72YPexTSSgEJ1QDam/Portfolio-%E2%80%94-Imrane-QERCHI?node-id=0-1&t=ncjb3QtyBgZ7F585-1
 
 This template should help get you started developing with Vue 3 in Vite.
 
