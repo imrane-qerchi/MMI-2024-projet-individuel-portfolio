@@ -34,7 +34,7 @@ export type AuthSystemFields<T = never> = {
 
 // Record types for each collection
 
-export enum ProjetsDomaineOptions {
+export enum ProjetsDomainesOptions {
 	"Communication" = "Communication",
 	"Maquettage" = "Maquettage",
 	"Développement" = "Développement",
@@ -44,7 +44,7 @@ export type ProjetsRecord = {
 	client?: string
 	description_contribution?: HTMLString
 	description_projet?: HTMLString
-	domaine?: ProjetsDomaineOptions[]
+	domaines?: ProjetsDomainesOptions[]
 	image_couverture?: string
 	images?: string[]
 	nom?: string
