@@ -7,5 +7,6 @@ const mesProjets = await pb.collection('projets').getFullList()
 
 <template>
   <h1 class="text-center font-syne text-2xl">Guide de style</h1>
-  <CardProjet v-for="unProjet in mesProjets" v-bind="unProjet" :key="unProjet.id"/>
+  <CardProjet v-bind="mesProjets[0]"/>
+  <!-- <CardProjet v-for="unProjet in mesProjets" v-bind="unProjet" :key="unProjet.id"/> -->
 </template>
