@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { ProjetsResponse } from '@/pocketbase-types'
+import ImgPb from './ImgPb.vue';
 
-defineProps<Partial<ProjetsResponse>>()
+const props = defineProps<ProjetsResponse>()
 </script>
 
 <template>
@@ -9,8 +10,9 @@ defineProps<Partial<ProjetsResponse>>()
     class="relative flex h-[468px] w-[300px] flex-col items-start justify-start gap-[19px] rounded-2xl"
   >
     <div class="relative h-[332.57px] flex-shrink-0 flex-grow-0 self-stretch">
-      <img
-        :src="image_couverture"
+      <ImgPb
+        :record="props"
+        :filename="image_couverture"
         class="absolute left-[-1px] top-[-1px] h-[333px] w-[300px] rounded-2xl object-none"
       />
     </div>
