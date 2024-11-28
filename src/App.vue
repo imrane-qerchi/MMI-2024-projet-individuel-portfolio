@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router/auto'
 import LogInOut from './components/LogInOut.vue'
 import HeaderPortfolio from './components/headerPortfolio.vue';
+import FooterPortfolio from './components/footerPortfolio.vue';
 </script>
 
 <template>
@@ -16,5 +17,7 @@ import HeaderPortfolio from './components/headerPortfolio.vue';
         </Suspense>
       </RouterView>
     </main>
+
+    <FooterPortfolio />
   </div>
 </template>
