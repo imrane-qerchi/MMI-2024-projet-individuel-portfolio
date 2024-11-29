@@ -10,14 +10,6 @@ export default {
         'gris-clair': '#c4c4c4',
         'gris-fonce': '#949494'
       },
-      fontSize: {
-        base: '1rem',
-        lg: '1.25rem',
-        xl: '1.5rem',
-        '2xl': '3.5rem',
-        '3xl': '4rem',
-        '4xl': '4.5rem'
-      },
       fontFamily: {
         syne: ['Syne', 'sans-serif'],
         rubik: ['Rubik', 'sans-serif']
