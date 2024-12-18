@@ -1,13 +1,13 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import { ref } from 'vue';
-import { pb } from '@/backend';
-import BtnDefault from '@/components/btnDefault.vue';
+import { ref } from 'vue'
+import { pb } from '@/backend'
+import BtnDefault from '@/components/btnDefault.vue'
 
 // Variables de formulaire
-const nom = ref('');
-const email = ref('');
-const message = ref('');
+const nom = ref('')
+const email = ref('')
+const message = ref('')
 
 // Fonction pour envoyer le message
 const envoyerMessage = async () => {
@@ -15,69 +15,88 @@ const envoyerMessage = async () => {
     await pb.collection('contact').create({
       nom: nom.value,
       email: email.value,
-      message: message.value,
-    });
-    alert('Message envoyé avec succès!');
+      message: message.value
+    })
+    alert('Message envoyé avec succès!')
     // Réinitialiser les champs après envoi
-    nom.value = '';
-    email.value = '';
-    message.value = '';
+    nom.value = ''
+    email.value = ''
+    message.value = ''
   } catch (error) {
-    console.error('Erreur lors de l\'envoi du message:', error);
-    alert('Une erreur est survenue. Veuillez réessayer.');
+    console.error("Erreur lors de l'envoi du message:", error)
+    alert('Une erreur est survenue. Veuillez réessayer.')
   }
-};
+}
 </script>
 
 <template>
-  <div class="py-12 px-6 bg-fond text-blanc">
-    <h1 class="font-syne text-3xl text-left mb-4">Contactez-moi</h1>
-    <p class="text-lg mb-8">Si vous avez des questions ou souhaitez discuter de projets, n'hésitez pas à me contacter.</p>
+  <!-- Conteneur principal -->
+  <div class="contact-container">
+    <!-- Titre principal -->
+    <h1 class="mt-12 px-6 text-left font-syne text-3xl font-bold lg:text-7xl">Contact</h1>
 
-    <form @submit.prevent="envoyerMessage" class="space-y-6 max-w-xl mx-auto">
-      <!-- Champ Nom -->
-      <div>
-        <label for="nom" class="block text-lg mb-2">Votre nom</label>
-        <input
-          type="text"
-          id="nom"
-          v-model="nom"
-          placeholder="Entrez votre nom"
-          class="w-full p-3 bg-transparent border-b-2 border-orange-500 text-blanc focus:outline-none focus:border-orange-700"
-          required
-        />
-      </div>
+    <!-- Sous-titre -->
+    <p class="mt-4 px-6 text-left font-rubik text-sm text-gray-500 lg:text-lg">
+      Pour n'importe quel projet ou information
+    </p>
 
-      <!-- Champ Email -->
-      <div>
-        <label for="email" class="block text-lg mb-2">Votre email</label>
-        <input
-          type="email"
-          id="email"
-          v-model="email"
-          placeholder="Entrez votre email"
-          class="w-full p-3 bg-transparent border-b-2 border-orange-500 text-blanc focus:outline-none focus:border-orange-700"
-          required
-        />
-      </div>
+    <!-- Barre horizontale -->
+    <div class="mx-6 my-6">
+      <hr class="border-t-1 border-gray-500" />
+    </div>
 
-      <!-- Champ Message -->
-      <div>
-        <label for="message" class="block text-lg mb-2">Votre message</label>
-        <textarea
-          id="message"
-          v-model="message"
-          placeholder="Entrez votre message"
-          class="w-full p-3 bg-transparent border-b-2 border-orange-500 text-blanc focus:outline-none focus:border-orange-700"
-          rows="6"
-          required
-        ></textarea>
-      </div>
+    <!-- Section Accroche -->
+    <h2 class="px-6 font-syne text-4xl font-bold tracking-tighter text-white lg:text-6xl">
+      Entrons en<br />contact !
+    </h2>
 
-      <!-- Bouton Envoyer -->
-      <div class="flex justify-center">
-        <BtnDefault text="Envoyer" @click="envoyerMessage" />
-      </div>
-    </form>
+    <!-- Formulaire de contact -->
+    <div class="bg-fond px-6 py-6 text-blanc">
+      <form @submit.prevent="envoyerMessage" class="mx-auto max-w-xl space-y-6">
+        <!-- Champ Nom -->
+        <div>
+          <label for="nom" class="mb-2 block font-rubik text-lg">NOM</label>
+          <input
+            type="text"
+            id="nom"
+            v-model="nom"
+            placeholder="Entrez votre nom"
+            class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
+            required
+          />
+        </div>
+
+        <!-- Champ Email -->
+        <div>
+          <label for="email" class="mb-2 block font-rubik text-lg">EMAIL</label>
+          <input
+            type="email"
+            id="email"
+            v-model="email"
+            placeholder="Entrez votre email"
+            class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
+            required
+          />
+        </div>
+
+        <!-- Champ Message -->
+        <div>
+          <label for="message" class="mb-2 block font-rubik text-lg">MESSAGE</label>
+          <textarea
+            id="message"
+            v-model="message"
+            placeholder="Entrez votre message"
+            class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
+            rows="6"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Bouton Envoyer -->
+        <div class="flex justify-center lg:justify-normal">
+          <BtnDefault text="Envoyer" @click="envoyerMessage" />
+        </div>
+      </form>
+    </div>
   </div>
 </template>

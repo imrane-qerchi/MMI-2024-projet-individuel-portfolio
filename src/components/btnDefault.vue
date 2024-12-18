@@ -2,26 +2,26 @@
 defineProps({
   text: {
     type: String,
-    default: "Bouton",
+    default: 'Bouton'
   },
   showArrow: {
     type: Boolean,
-    default: true,
+    default: true
   },
   variant: {
-    type: String as () => "solid" | "outline",
-    default: "solid",
-  },
-});
+    type: String as () => 'solid' | 'outline',
+    default: 'solid'
+  }
+})
 </script>
 
 <template>
   <button
     :class="[
-      'font-semibold rounded-full px-8 py-3 flex items-center justify-center transition-all duration-300 shadow-md',
+      'flex items-center justify-center rounded-full px-8 py-3 font-rubik font-semibold shadow-md transition-all duration-300',
       variant === 'solid'
-        ? 'bg-orange-500 text-white hover:bg-orange-600'
-        : 'border border-orange-400 text-orange-400 bg-transparent hover:bg-orange-400 hover:text-white',
+        ? 'bg-orange-400 text-white hover:bg-orange-600'
+        : 'border border-orange-400 bg-transparent text-orange-400 hover:bg-orange-400 hover:text-white'
     ]"
   >
     {{ text }}

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router/auto'
 import LogInOut from './components/LogInOut.vue'
-import HeaderPortfolio from './components/headerPortfolio.vue';
-import FooterPortfolio from './components/footerPortfolio.vue';
+import HeaderPortfolio from './components/headerPortfolio.vue'
+import FooterPortfolio from './components/footerPortfolio.vue'
 </script>
 
 <template>
-  <div class="bg-fond min-h-screen text-blanc">
+  <div class="min-h-screen bg-fond text-blanc">
     <LogInOut />
     <HeaderPortfolio />
 

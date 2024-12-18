@@ -7,7 +7,7 @@ const props = defineProps<ProjetsResponse>()
 
 <template>
   <div
-    class="relative flex flex-col items-start justify-start gap-4 rounded-2xl p-4 sm:h-auto sm:w-full md:w-[300px] lg:h-[468px] lg:w-[350px] xl:w-[400px]"
+    class="relative flex flex-col items-start justify-start gap-4 rounded-2xl p-4 font-syne sm:h-auto sm:w-full md:w-[300px] lg:h-[468px] lg:w-[350px] xl:w-[400px]"
   >
     <!-- Image -->
     <div class="relative h-[200px] w-full flex-shrink-0 sm:h-[250px] md:h-[300px] lg:h-[332px]">

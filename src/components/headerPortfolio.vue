@@ -1,38 +1,57 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
-// État pour gérer l'ouverture/fermeture du menu
-const isMenuOpen = ref(false);
+// État pour gérer l'ouverture/fermeture du menu mobile
+const isMenuOpen = ref(false)
 
 // Fonction pour basculer l'état du menu
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
+  isMenuOpen.value = !isMenuOpen.value
+}
 
 // Fonction pour fermer le menu
 const closeMenu = () => {
-  isMenuOpen.value = false;
-};
+  isMenuOpen.value = false
+}
 </script>
 
 <template>
   <!-- Header -->
   <header
-    class="flex items-center justify-between w-full px-6 py-4 bg-fond fixed top-0 left-0 z-50"
+    class="fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-fond px-6 py-4 lg:px-16"
   >
     <!-- Logo -->
     <div>
-      <img src="/logo-qrh.svg" alt="Logo QRH" class="h-10" />
+      <img src="/logo-qrh.svg" alt="Logo QRH" class="h-12 lg:ml-10" />
     </div>
 
-    <!-- Icône du menu -->
-    <div class="cursor-pointer" @click="toggleMenu">
+    <!-- Navigation pour Desktop -->
+    <nav class="hidden lg:mr-10 lg:flex lg:items-center lg:space-x-12">
+      <router-link to="/" class="font-syne text-lg text-gray-400 hover:text-white">
+        ACCUEIL
+      </router-link>
+      <router-link to="/a-propos" class="font-syne text-lg text-gray-400 hover:text-white">
+        À PROPOS
+      </router-link>
+      <router-link to="/projets" class="font-syne text-lg text-gray-400 hover:text-white">
+        MES PROJETS
+      </router-link>
+      <router-link
+        to="/contact"
+        class="rounded-full border-2 border-gray-400 bg-fond-footer px-6 py-2 font-syne text-lg text-gray-400 hover:border-white hover:text-white"
+      >
+        CONTACT
+      </router-link>
+    </nav>
+
+    <!-- Icône du menu mobile -->
+    <div class="cursor-pointer lg:hidden" @click="toggleMenu">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke="#C4C4C4"
-        class="w-8 h-8"
+        class="h-8 w-8"
       >
         <path
           stroke-linecap="round"
@@ -44,13 +63,13 @@ const closeMenu = () => {
     </div>
   </header>
 
-  <!-- Espace réservé pour le header -->
+  <!-- Espace réservé pour éviter le chevauchement -->
   <div class="h-[64px]"></div>
 
-  <!-- Menu latéral -->
+  <!-- Menu latéral mobile -->
   <div
     v-if="isMenuOpen"
-    class="fixed top-0 right-0 w-2/3 h-screen bg-fond text-white z-40 transition-transform transform"
+    class="fixed right-0 top-0 z-40 h-screen w-2/3 transform bg-fond text-white transition-transform"
   >
     <div class="flex justify-end p-4">
       <!-- Icône de fermeture -->
@@ -60,7 +79,7 @@ const closeMenu = () => {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          class="w-8 h-8"
+          class="h-8 w-8"
         >
           <path
             stroke-linecap="round"
@@ -74,21 +93,8 @@ const closeMenu = () => {
     <nav class="p-6">
       <ul class="flex flex-col space-y-6">
         <li>
-          <router-link
-            to="/"
-            class="text-xl font-semibold hover:underline"
-            @click="closeMenu"
-          >
+          <router-link to="/" class="text-xl font-semibold hover:underline" @click="closeMenu">
             Accueil
-          </router-link>
-        </li>
-        <li>
-          <router-link
-            to="/projets"
-            class="text-xl font-semibold hover:underline"
-            @click="closeMenu"
-          >
-            Mes projets
           </router-link>
         </li>
         <li>
@@ -98,6 +104,15 @@ const closeMenu = () => {
             @click="closeMenu"
           >
             À propos de moi
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            to="/projets"
+            class="text-xl font-semibold hover:underline"
+            @click="closeMenu"
+          >
+            Mes projets
           </router-link>
         </li>
         <li>
