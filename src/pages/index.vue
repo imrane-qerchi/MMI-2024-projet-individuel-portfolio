@@ -11,7 +11,7 @@ const mesProjets = await pb.collection('projets').getFullList({
 </script>
 
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen lg:mx-20">
     <!-- Section de bienvenue -->
     <section class="flex flex-col items-center justify-center space-y-8 px-6 py-16 text-center">
       <!-- Titre principal -->

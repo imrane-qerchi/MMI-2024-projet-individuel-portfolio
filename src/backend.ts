@@ -4,7 +4,9 @@ import { ref } from 'vue'
 
 export const pb = new PocketBase(import.meta.env.VITE_URL_POCKETBASE) as TypedPocketBase
 
-pb.collection('equipes').getFullList()
+pb.collection('projets').getFullList()
+
+pb.autoCancellation(false);
 
 /** Déconnecte l'utilisateur */
 export function logout() {

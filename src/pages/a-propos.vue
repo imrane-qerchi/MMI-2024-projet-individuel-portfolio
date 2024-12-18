@@ -16,27 +16,35 @@
       <hr class="border-t-1 border-gray-500" />
     </div>
 
-    <!-- Contenu principal -->
-    <div class="px-6 text-sm leading-relaxed text-gray-300 md:text-base">
-      <!-- Section Accroche -->
-      <h2 class="text-4xl font-bold leading-tight text-white lg:text-[80px]">
-        Développeur polyvalent<br />et créatif !
-      </h2>
+    <section class="px-6 py-16 lg:py-32">
+    <!-- Conteneur principal en flex pour desktop -->
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between">
+      <!-- Titre à gauche -->
+      <div class="lg:w-1/2 mb-8 lg:mb-0">
+        <h2
+          class="text-4xl font-bold leading-tight text-white lg:text-[80px] lg:leading-[1.1]"
+        >
+          Développeur polyvalent<br />et créatif !
+        </h2>
+      </div>
 
-      <!-- Texte de description -->
-      <p class="mt-6 font-rubik text-base lg:text-xl">
-        Moi, c’est <strong>Imrane</strong>, étudiant en deuxième année de
-        <strong>BUT Métiers du Multimédia et de l’Internet (MMi)</strong>, spécialisé en
-        <strong>développement Web</strong>. Passionné par la réalisation de sites Web et
-        d’applications, j’ai acquis des compétences en <strong>front-end</strong> et
-        <strong>back-end</strong>.
-      </p>
-      <p class="mt-4 font-rubik text-base lg:text-xl">
-        Je m’intéresse aussi au <strong>design UX/UI</strong> et à la
-        <strong>communication</strong>, alliant technique et créativité pour créer des interfaces
-        ergonomiques.
-      </p>
+      <!-- Contenu texte à droite -->
+      <div class="lg:w-1/2 text-sm leading-relaxed text-gray-300 md:text-base">
+        <p class="mt-6 font-rubik text-base lg:text-xl">
+          Moi, c’est <strong>Imrane</strong>, étudiant en deuxième année de
+          <strong>BUT Métiers du Multimédia et de l’Internet (MMi)</strong>, spécialisé en
+          <strong>développement Web</strong>. Passionné par la réalisation de sites Web et
+          d’applications, j’ai acquis des compétences en <strong>front-end</strong> et
+          <strong>back-end</strong>.
+        </p>
+        <p class="mt-4 font-rubik text-base lg:text-xl">
+          Je m’intéresse aussi au <strong>design UX/UI</strong> et à la
+          <strong>communication</strong>, alliant technique et créativité pour créer des interfaces
+          ergonomiques.
+        </p>
+      </div>
     </div>
+  </section>
 
     <!-- Images décoratives -->
     <div class="mt-12 flex flex-col items-center gap-12 px-6">

@@ -6,7 +6,7 @@ defineProps({
   },
   showArrow: {
     type: Boolean,
-    default: true
+    default: false
   },
   variant: {
     type: String as () => 'solid' | 'outline',
@@ -18,7 +18,7 @@ defineProps({
 <template>
   <button
     :class="[
-      'flex items-center justify-center rounded-full px-8 py-3 font-rubik font-semibold shadow-md transition-all duration-300',
+      'flex items-center justify-center rounded-full px-8 py-3 text-sm font-rubik shadow-md transition-all duration-300',
       variant === 'solid'
         ? 'bg-orange-400 text-white hover:bg-orange-600'
         : 'border border-orange-400 bg-transparent text-orange-400 hover:bg-orange-400 hover:text-white'

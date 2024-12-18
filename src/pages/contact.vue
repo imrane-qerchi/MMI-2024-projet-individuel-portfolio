@@ -31,9 +31,9 @@ const envoyerMessage = async () => {
 
 <template>
   <!-- Conteneur principal -->
-  <div class="contact-container">
+  <div class="contact-container lg:mx-20">
     <!-- Titre principal -->
-    <h1 class="mt-12 px-6 text-left font-syne text-3xl font-bold lg:text-7xl">Contact</h1>
+    <h1 class="mt-12 px-6 text-left font-syne font-bold text-3xl lg:text-7xl">Contact</h1>
 
     <!-- Sous-titre -->
     <p class="mt-4 px-6 text-left font-rubik text-sm text-gray-500 lg:text-lg">
