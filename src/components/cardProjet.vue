@@ -8,7 +8,7 @@ const props = defineProps<ProjetsResponse>()
 <template>
   <router-link
     :to="`/projets/${props.id}`"
-    class="relative flex flex-col items-start justify-start gap-4 rounded-2xl p-4 font-syne sm:h-auto sm:w-full md:w-[300px] lg:h-[468px] lg:w-[350px] xl:w-[400px] transition-transform hover:scale-105"
+    class="relative flex flex-col items-start justify-start gap-4 rounded-2xl p-4 font-syne transition-transform hover:scale-105 sm:h-auto sm:w-full md:w-[300px] lg:h-[468px] lg:w-[350px] xl:w-[400px]"
   >
     <!-- Image -->
     <div class="relative h-[200px] w-full flex-shrink-0 sm:h-[250px] md:h-[300px] lg:h-[332px]">

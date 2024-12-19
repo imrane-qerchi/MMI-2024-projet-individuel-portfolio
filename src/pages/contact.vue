@@ -1,30 +1,54 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import { ref } from 'vue'
-import { pb } from '@/backend'
-import BtnDefault from '@/components/btnDefault.vue'
+import { reactive, ref } from 'vue'
 
-// Variables de formulaire
-const nom = ref('')
-const email = ref('')
-const message = ref('')
+// État pour les champs du formulaire
+const form = reactive({
+  nom: '',
+  email: '',
+  objet: '',
+  message: ''
+})
 
-// Fonction pour envoyer le message
+// Référence pour le résultat de l'envoi
+const result = ref<string>('')
+
+// Fonction pour envoyer le message via Web3Forms
 const envoyerMessage = async () => {
+  const formData = new FormData()
+  formData.append('access_key', 'edbb0aad-a3f7-4bc3-a8ae-62b6ff465064')
+  formData.append('name', form.nom)
+  formData.append('email', form.email)
+  formData.append('subject', form.objet)
+  formData.append('message', form.message)
+
   try {
-    await pb.collection('contact').create({
-      nom: nom.value,
-      email: email.value,
-      message: message.value
+    result.value = 'Veuillez patienter...'
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
     })
-    alert('Message envoyé avec succès!')
-    // Réinitialiser les champs après envoi
-    nom.value = ''
-    email.value = ''
-    message.value = ''
+
+    const json = await response.json()
+
+    if (response.status === 200) {
+      result.value = 'Formulaire soumis avec succès !'
+      // Réinitialiser les champs du formulaire
+      form.nom = ''
+      form.email = ''
+      form.objet = ''
+      form.message = ''
+    } else {
+      result.value = `Erreur : ${json.message}`
+    }
   } catch (error) {
-    console.error("Erreur lors de l'envoi du message:", error)
-    alert('Une erreur est survenue. Veuillez réessayer.')
+    console.error("Erreur lors de l'envoi du formulaire :", error)
+    result.value = 'Une erreur est survenue. Veuillez réessayer.'
+  } finally {
+    // Cacher le message après quelques secondes
+    setTimeout(() => {
+      result.value = ''
+    }, 3000)
   }
 }
 </script>
@@ -53,14 +77,18 @@ const envoyerMessage = async () => {
 
       <!-- Formulaire de contact -->
       <div class="bg-fond px-6 py-6 text-blanc lg:w-2/3">
-        <form @submit.prevent="envoyerMessage" class="mx-auto max-w-xl space-y-6">
+        <form @submit.prevent="envoyerMessage" id="form" class="mx-auto max-w-xl space-y-6">
+          <!-- Champ clé cachée -->
+          <input type="hidden" name="access_key" value="edbb0aad-a3f7-4bc3-a8ae-62b6ff465064" />
+
           <!-- Champ Nom -->
           <div>
             <label for="nom" class="mb-2 block font-rubik text-lg">NOM</label>
             <input
               type="text"
               id="nom"
-              v-model="nom"
+              name="name"
+              v-model="form.nom"
               placeholder="Entrez votre nom"
               class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
               required
@@ -73,8 +101,23 @@ const envoyerMessage = async () => {
             <input
               type="email"
               id="email"
+              name="email"
+              v-model="form.email"
               placeholder="Entrez votre email"
-              v-model="email"
+              class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
+              required
+            />
+          </div>
+
+          <!-- Champ Objet -->
+          <div>
+            <label for="objet" class="mb-2 block font-rubik text-lg">OBJET</label>
+            <input
+              type="text"
+              id="objet"
+              name="subject"
+              v-model="form.objet"
+              placeholder="Entrez l'objet du message"
               class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
               required
             />
@@ -85,7 +128,8 @@ const envoyerMessage = async () => {
             <label for="message" class="mb-2 block font-rubik text-lg">MESSAGE</label>
             <textarea
               id="message"
-              v-model="message"
+              name="message"
+              v-model="form.message"
               placeholder="Entrez votre message"
               class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
               rows="6"
@@ -93,11 +137,22 @@ const envoyerMessage = async () => {
             ></textarea>
           </div>
 
+          <!-- Champ Anti-Bot -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none" />
+
           <!-- Bouton Envoyer -->
           <div class="flex justify-center lg:justify-start">
-            <BtnDefault text="Envoyer" @click="envoyerMessage" />
+            <button
+              type="submit"
+              class="flex items-center justify-center rounded-full bg-orange-400 px-8 py-3 font-rubik font-semibold text-white shadow-md transition-all duration-300 hover:bg-orange-600"
+            >
+              Envoyer
+            </button>
           </div>
         </form>
+
+        <!-- Résultat -->
+        <div id="result" class="mt-4 text-center font-rubik text-lg text-white"></div>
       </div>
     </div>
 

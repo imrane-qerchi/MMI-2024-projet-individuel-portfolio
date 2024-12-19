@@ -44,9 +44,9 @@ const mesProjets = await pb.collection('projets').getFullList({
 
         <!-- Bouton -->
         <div class="bt-8">
-        <router-link to="/a-propos">
-          <BtnDefault text="À propos de moi"/>
-        </router-link>
+          <router-link to="/a-propos">
+            <BtnDefault text="À propos de moi" />
+          </router-link>
         </div>
       </div>
 

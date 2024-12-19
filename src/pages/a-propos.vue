@@ -68,7 +68,7 @@
     </div>
 
     <!-- Section compétences -->
-    <section class="space-y-12 px-6 pt-32 pb-16">
+    <section class="space-y-12 px-6 pb-16 pt-32">
       <!-- Titre principal -->
       <h2 class="text-center font-syne text-2xl font-bold text-white lg:text-6xl">
         Parmi ce que je maîtrise...

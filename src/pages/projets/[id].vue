@@ -29,15 +29,27 @@ const fetchProjetById = async () => {
 onMounted(fetchProjetById)
 
 const props = defineProps<ProjetsResponse>()
+
+const isLightboxOpen = ref(false) // État pour ouvrir/fermer la lightbox
+const currentImage = ref('') // Nom du fichier actuellement affiché en grand
+
+const openLightbox = (image: string) => {
+  currentImage.value = image
+  isLightboxOpen.value = true
+}
+
+const closeLightbox = () => {
+  isLightboxOpen.value = false
+  currentImage.value = ''
+}
 </script>
 
 <template>
-  <section class="min-h-screen px-6 py-16 text-white lg:px-16 lg:py-32">
+  <section class="min-h-screen px-6 py-16 text-white lg:px-16 lg:py-20">
     <!-- Conteneur principal -->
-    <div v-if="projet" class="mx-auto max-w-3xl space-y-8">
-
+    <div v-if="projet" class="mx-auto max-w-4xl space-y-12">
       <!-- Titre principal -->
-      <div class="border-b border-gray-600 pb-4">
+      <div class="border-b border-gray-600 pb-6">
         <h1 class="font-syne text-4xl font-bold lg:text-6xl">{{ projet.nom }}</h1>
         <p class="mt-2 font-rubik text-sm text-gray-400 lg:text-base">
           {{ projet.sous_titre }}
@@ -45,52 +57,62 @@ const props = defineProps<ProjetsResponse>()
       </div>
 
       <!-- Image Principale -->
-      <div class="w-full">
+      <div class="flex justify-center">
         <ImgPb
           :record="projet"
           :filename="projet.image_principale"
-          class="h-full w-full rounded-2xl object-cover"
+          class="max-h-[700px] w-full max-w-[1200px] rounded-2xl object-contain"
+          style="height: auto"
         />
       </div>
 
-      <!-- Sous-titre -->
-      <h2 class="font-syne text-2xl font-bold lg:text-4xl">Le Projet</h2>
+      <!-- Sous-titre et Texte descriptif -->
+      <div class="space-y-6 text-left">
+        <h2 class="font-syne text-2xl font-bold lg:text-4xl">Le Projet</h2>
+        <div class="space-y-6 font-rubik text-sm leading-relaxed text-gray-300 lg:text-lg">
+          <p v-html="projet?.description_projet"></p>
+        </div>
+      </div>
 
-      <!-- Texte descriptif -->
-      <div class="space-y-6 font-rubik text-sm leading-relaxed text-gray-300 lg:text-lg">
-        <p v-html="projet?.description_projet"></p>
+      <!-- Lightbox -->
+      <div
+        v-if="isLightboxOpen"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+        @click="closeLightbox"
+      >
+        <img
+          :src="pb.files.getUrl(projet, currentImage)"
+          alt="Image en grand"
+          class="max-h-full max-w-full rounded-lg"
+        />
       </div>
 
       <!-- Affichage des images -->
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <div class="mx-auto grid max-w-4xl grid-cols-1 place-items-center gap-8 lg:grid-cols-2">
         <ImgPb
           v-for="(image, index) in projet.images"
           :key="index"
           :record="projet"
           :filename="image"
-          class="h-72 w-full rounded-2xl object-cover"
+          class="h-[300px] w-full cursor-pointer rounded-2xl object-cover"
+          @click="openLightbox(image)"
         />
       </div>
 
-      <!-- Sous-titre -->
-      <h2 class="font-syne text-2xl font-bold lg:text-4xl">Mon Travail</h2>
-
-      <!-- Texte descriptif -->
-      <div class="space-y-6 font-rubik text-sm leading-relaxed text-gray-300 lg:text-lg">
-        <p v-html="projet?.description_contribution"></p>
+      <!-- Sous-titre et Texte descriptif -->
+      <div class="space-y-6 text-left">
+        <h2 class="font-syne text-2xl font-bold lg:text-4xl">Mon Travail</h2>
+        <div class="space-y-6 font-rubik text-sm leading-relaxed text-gray-300 lg:text-lg">
+          <p v-html="projet?.description_contribution"></p>
+        </div>
       </div>
 
       <!-- Bouton vers le projet -->
-      <div class="flex justify-center mt-20">
+      <div class="mt-20 flex justify-center">
         <a :href="projet?.lien" target="_blank" rel="noopener noreferrer">
           <BtnDefault text="VOIR LE PROJET" variant="outline" :showArrow="true" />
         </a>
       </div>
-    </div>
-
-    <!-- Message si le projet n'existe pas -->
-    <div v-else class="text-center text-gray-400">
-      <p>Projet non trouvé ou indisponible.</p>
     </div>
   </section>
 </template>

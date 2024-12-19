@@ -69,9 +69,25 @@
       <!-- Mentions légales -->
       <div class="w-full">
         <hr class="mb-8 mt-4 border-gray-700 lg:mx-28 lg:mt-16" />
-        <p class="font-syne text-xl text-gray-400 lg:text-2xl">
-          © 2024. Imrane QERCHI. Tous droits réservés.
-        </p>
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+          <p class="font-syne text-xl text-gray-400 lg:ml-10 lg:text-2xl">
+            © 2024. Imrane QERCHI. Tous droits réservés.
+          </p>
+          <div class="mt-4 flex space-x-4 lg:mr-10 lg:mt-0">
+            <router-link
+              to="/mentions-legales"
+              class="font-syne text-gray-400 hover:text-orange-400"
+            >
+              Mentions légales
+            </router-link>
+            <router-link
+              to="/conditions-generales-utilisation"
+              class="font-syne text-gray-400 hover:text-orange-400"
+            >
+              Conditions générales d'utilisation
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
   </footer>

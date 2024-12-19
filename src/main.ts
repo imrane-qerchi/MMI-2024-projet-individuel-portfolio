@@ -18,13 +18,13 @@ const router = createRouter({
     if (to.hash) {
       return {
         el: to.hash,
-        behavior: 'smooth', // Ajoute un défilement fluide (facultatif)
+        behavior: 'smooth' // Ajoute un défilement fluide (facultatif)
       }
     }
 
     // Sinon, on remonte en haut de la page
     return { top: 0 }
-  },
+  }
 })
 
 const app = createApp(App)
