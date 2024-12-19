@@ -6,7 +6,7 @@ export const pb = new PocketBase(import.meta.env.VITE_URL_POCKETBASE) as TypedPo
 
 pb.collection('projets').getFullList()
 
-pb.autoCancellation(false);
+pb.autoCancellation(false)
 
 /** Déconnecte l'utilisateur */
 export function logout() {

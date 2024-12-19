@@ -33,7 +33,7 @@ const envoyerMessage = async () => {
   <!-- Conteneur principal -->
   <div class="contact-container lg:mx-20">
     <!-- Titre principal -->
-    <h1 class="mt-12 px-6 text-left font-syne font-bold text-3xl lg:text-7xl">Contact</h1>
+    <h1 class="mt-12 px-6 text-left font-syne text-3xl font-bold lg:text-7xl">Contact</h1>
 
     <!-- Sous-titre -->
     <p class="mt-4 px-6 text-left font-rubik text-sm text-gray-500 lg:text-lg">
@@ -45,58 +45,69 @@ const envoyerMessage = async () => {
       <hr class="border-t-1 border-gray-500" />
     </div>
 
-    <!-- Section Accroche -->
-    <h2 class="px-6 font-syne text-4xl font-bold tracking-tighter text-white lg:text-6xl">
-      Entrons en<br />contact !
-    </h2>
+    <div class="flex flex-col items-start gap-8 px-6 py-12 lg:flex-row">
+      <!-- Section Accroche -->
+      <h2 class="font-syne text-4xl font-bold tracking-tighter text-white lg:w-1/3 lg:text-6xl">
+        Entrons en<br />contact !
+      </h2>
 
-    <!-- Formulaire de contact -->
-    <div class="bg-fond px-6 py-6 text-blanc">
-      <form @submit.prevent="envoyerMessage" class="mx-auto max-w-xl space-y-6">
-        <!-- Champ Nom -->
-        <div>
-          <label for="nom" class="mb-2 block font-rubik text-lg">NOM</label>
-          <input
-            type="text"
-            id="nom"
-            v-model="nom"
-            placeholder="Entrez votre nom"
-            class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
-            required
-          />
-        </div>
+      <!-- Formulaire de contact -->
+      <div class="bg-fond px-6 py-6 text-blanc lg:w-2/3">
+        <form @submit.prevent="envoyerMessage" class="mx-auto max-w-xl space-y-6">
+          <!-- Champ Nom -->
+          <div>
+            <label for="nom" class="mb-2 block font-rubik text-lg">NOM</label>
+            <input
+              type="text"
+              id="nom"
+              v-model="nom"
+              placeholder="Entrez votre nom"
+              class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
+              required
+            />
+          </div>
 
-        <!-- Champ Email -->
-        <div>
-          <label for="email" class="mb-2 block font-rubik text-lg">EMAIL</label>
-          <input
-            type="email"
-            id="email"
-            v-model="email"
-            placeholder="Entrez votre email"
-            class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
-            required
-          />
-        </div>
+          <!-- Champ Email -->
+          <div>
+            <label for="email" class="mb-2 block font-rubik text-lg">EMAIL</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Entrez votre email"
+              v-model="email"
+              class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
+              required
+            />
+          </div>
 
-        <!-- Champ Message -->
-        <div>
-          <label for="message" class="mb-2 block font-rubik text-lg">MESSAGE</label>
-          <textarea
-            id="message"
-            v-model="message"
-            placeholder="Entrez votre message"
-            class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
-            rows="6"
-            required
-          ></textarea>
-        </div>
+          <!-- Champ Message -->
+          <div>
+            <label for="message" class="mb-2 block font-rubik text-lg">MESSAGE</label>
+            <textarea
+              id="message"
+              v-model="message"
+              placeholder="Entrez votre message"
+              class="w-full border-b-2 border-gray-500 bg-transparent p-3 font-rubik text-blanc focus:border-orange-400 focus:outline-none"
+              rows="6"
+              required
+            ></textarea>
+          </div>
 
-        <!-- Bouton Envoyer -->
-        <div class="flex justify-center lg:justify-normal">
-          <BtnDefault text="Envoyer" @click="envoyerMessage" />
-        </div>
-      </form>
+          <!-- Bouton Envoyer -->
+          <div class="flex justify-center lg:justify-start">
+            <BtnDefault text="Envoyer" @click="envoyerMessage" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Image en bas de page -->
+    <div class="mt-12 flex justify-center">
+      <img
+        src="/src/assets/ordi.png"
+        alt="Illustration ordinateur"
+        class="h-auto w-full max-w-3xl rounded-lg object-cover shadow-lg lg:max-w-5xl"
+      />
     </div>
   </div>
 </template>

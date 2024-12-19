@@ -6,8 +6,9 @@ const props = defineProps<ProjetsResponse>()
 </script>
 
 <template>
-  <div
-    class="relative flex flex-col items-start justify-start gap-4 rounded-2xl p-4 font-syne sm:h-auto sm:w-full md:w-[300px] lg:h-[468px] lg:w-[350px] xl:w-[400px]"
+  <router-link
+    :to="`/projets/${props.id}`"
+    class="relative flex flex-col items-start justify-start gap-4 rounded-2xl p-4 font-syne sm:h-auto sm:w-full md:w-[300px] lg:h-[468px] lg:w-[350px] xl:w-[400px] transition-transform hover:scale-105"
   >
     <!-- Image -->
     <div class="relative h-[200px] w-full flex-shrink-0 sm:h-[250px] md:h-[300px] lg:h-[332px]">
@@ -21,20 +22,23 @@ const props = defineProps<ProjetsResponse>()
     <!-- Content -->
     <div class="flex w-full flex-col gap-2">
       <!-- Title and Line -->
-      <div class="flex items-center gap-2">
-        <p class="flex-grow text-left text-base font-bold text-white">
+      <div class="flex items-center">
+        <!-- Title -->
+        <p class="text-base font-bold text-white">
           {{ nom }}
         </p>
+
+        <!-- Line (SVG) -->
         <svg
-          class="flex-shrink-0 flex-grow-0"
-          width="48"
+          class="ml-4"
+          width="40"
           height="2"
-          viewBox="0 0 48 2"
+          viewBox="0 0 40 2"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid meet"
+          preserveAspectRatio="none"
         >
-          <line y1="1.0658" x2="48" y2="1.0658" stroke="#FB923C"></line>
+          <line x1="0" y1="1" x2="40" y2="1" stroke="#FB923C" stroke-width="2"></line>
         </svg>
       </div>
 
@@ -52,5 +56,5 @@ const props = defineProps<ProjetsResponse>()
         </p>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>

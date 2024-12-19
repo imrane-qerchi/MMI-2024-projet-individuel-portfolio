@@ -21,33 +21,42 @@ const mesProjets = await pb.collection('projets').getFullList({
       </h1>
 
       <!-- Bouton principal -->
-      <BtnDefault text="MES PROJETS" withArrow />
+      <router-link to="/projets">
+        <BtnDefault text="MES PROJETS" :showArrow="true" />
+      </router-link>
     </section>
 
     <!-- Section de présentation -->
-    <section class="flex flex-col items-start space-y-12 px-6 py-16 text-left">
-      <!-- Titre -->
-      <h2 class="font-syne text-2xl font-bold text-white lg:text-6xl">Pour faire connaissance</h2>
+    <section
+      class="flex flex-col items-start space-y-12 px-6 py-16 text-left lg:flex-row lg:items-center lg:space-y-0"
+    >
+      <!-- Conteneur pour le texte -->
+      <div class="space-y-6 lg:w-1/2">
+        <!-- Titre -->
+        <h2 class="font-syne text-2xl font-bold text-white lg:text-6xl">Pour faire connaissance</h2>
 
-      <!-- Description -->
-      <p class="max-w-md font-rubik text-sm leading-relaxed text-[#A8A8A8] lg:text-lg">
-        Moi, c’est Imrane, étudiant en <br />
-        BUT MMi à Montbéliard. Spécialisé dans le développement Web, mon domaine d’expertise s’étend
-        jusqu’au design en passant par la communication.
-      </p>
+        <!-- Description -->
+        <p class="max-w-md font-rubik text-sm leading-relaxed text-[#A8A8A8] lg:text-lg">
+          Moi, c’est Imrane, étudiant en <br />
+          BUT MMi à Montbéliard. Spécialisé dans le développement Web, mon domaine d’expertise
+          s’étend jusqu’au design en passant par la communication.
+        </p>
 
-      <!-- Image alignée à droite -->
-      <div class="relative mt-12 self-end">
-        <img src="#" alt="Imrane en action" class="rounded-lg shadow-lg" />
-        <!-- Décoration autour de l'image -->
-        <div
-          class="absolute left-2 top-2 h-full w-full rounded-lg border-2 border-orange-500"
-        ></div>
+        <!-- Bouton -->
+        <div class="bt-8">
+        <router-link to="/a-propos">
+          <BtnDefault text="À propos de moi"/>
+        </router-link>
+        </div>
       </div>
 
-      <!-- Bouton centré par rapport à la page -->
-      <div class="mt-12 flex justify-center">
-        <BtnDefault text="À propos de moi" />
+      <!-- Conteneur pour l'image -->
+      <div class="lg:w-1/2 lg:pl-12">
+        <img
+          src="/src/assets/image0.jpeg"
+          alt="Imrane en action"
+          class="w-full rounded-lg object-cover shadow-lg"
+        />
       </div>
     </section>
 
@@ -66,12 +75,14 @@ const mesProjets = await pb.collection('projets').getFullList({
 
       <!-- Bouton Explorez Plus -->
       <div class="mt-12 flex justify-center">
-        <BtnDefault
-          text="EXPLOREZ PLUS"
-          withArrow
-          outline
-          class="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white"
-        />
+        <router-link to="/projets">
+          <BtnDefault
+            text="EXPLOREZ PLUS"
+            :showArrow="true"
+            outline
+            class="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white"
+          />
+        </router-link>
       </div>
     </section>
 
