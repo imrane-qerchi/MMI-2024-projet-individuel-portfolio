@@ -13,7 +13,7 @@ const mesProjets = await pb.collection('projets').getFullList({
 <template>
   <div class="min-h-screen lg:mx-20">
     <!-- Section de bienvenue -->
-    <section class="flex flex-col items-center justify-center space-y-8 px-6 py-16 text-center">
+    <section class="flex flex-col items-center justify-center space-y-24 px-6 py-24 text-center">
       <!-- Titre principal -->
       <h1 class="font-syne text-3xl font-bold leading-tight lg:text-7xl">
         Bienvenue sur le <br />
