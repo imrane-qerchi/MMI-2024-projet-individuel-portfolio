@@ -1,5 +1,29 @@
 <!-- eslint-disable vue/multi-word-component-names -->
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+import { pb } from '@/backend'
+import ImgPb from '@/components/ImgPb.vue'
+
+// Récupération des compétences depuis PocketBase
+const skills = await pb.collection('skills').getFullList({
+  sort: 'nom' // Trier par nom pour un affichage organisé
+})
+
+// Références pour le carrousel
+const carouselContainer = ref<HTMLElement | null>(null)
+
+const scrollLeft = () => {
+  if (carouselContainer.value) {
+    carouselContainer.value.scrollBy({ left: -150, behavior: 'smooth' })
+  }
+}
+
+const scrollRight = () => {
+  if (carouselContainer.value) {
+    carouselContainer.value.scrollBy({ left: 150, behavior: 'smooth' })
+  }
+}
+</script>
 
 <template>
   <div class="about-container lg:mx-20">
@@ -68,62 +92,57 @@
     </div>
 
     <!-- Section compétences -->
-    <section class="space-y-12 px-6 pb-16 pt-32">
-      <!-- Titre principal -->
+    <section class="space-y-12 px-6 py-16 relative">
       <h2 class="text-center font-syne text-2xl font-bold text-white lg:text-6xl">
         Parmi ce que je maîtrise...
       </h2>
 
-      <!-- Grille des logos -->
-      <div class="grid grid-cols-2 place-items-center gap-8 sm:grid-cols-3 lg:grid-cols-4">
-        <!-- Figma -->
-        <div class="flex flex-col items-center space-y-2">
-          <img src="/figma.svg" alt="Figma" class="h-32 lg:h-36" />
-          <p class="font-syne text-white">Figma</p>
-        </div>
+      <!-- Flèches pour navigation -->
+      <button
+        @click="scrollLeft"
+        class="absolute left-0 top-1/2 -translate-y-1/2 p-2 text-lg"
+        aria-label="Scroll Left"
+      >
+      &#x21E6;
+      </button>
+      <button
+        @click="scrollRight"
+        class="absolute right-0 top-1/2 -translate-y-1/2 p-2"
+        aria-label="Scroll Right"
+      >
+      &#x21E8;
+      </button>
 
-        <!-- PocketBase -->
-        <div class="flex flex-col items-center space-y-2">
-          <img src="/pocketbase.svg" alt="PocketBase" class="h-32 lg:h-36" />
-          <p class="font-syne text-white">PocketBase</p>
-        </div>
-
-        <!-- Adobe Illustrator -->
-        <div class="flex flex-col items-center space-y-2">
-          <img src="/illustrator.svg" alt="Adobe Illustrator" class="h-32 lg:h-36" />
-          <p class="font-syne text-white">Adobe Illustrator</p>
-        </div>
-
-        <!-- Photoshop -->
-        <div class="flex flex-col items-center space-y-2">
-          <img src="/photoshop.svg" alt="Photoshop" class="h-32 lg:h-36" />
-          <p class="font-syne text-white">Photoshop</p>
-        </div>
-
-        <!-- DaVinci Resolve -->
-        <div class="flex flex-col items-center space-y-2">
-          <img src="/davinciresolve.svg" alt="DaVinci Resolve" class="h-32 lg:h-36" />
-          <p class="font-syne text-white">DaVinci Resolve</p>
-        </div>
-
-        <!-- Tailwind CSS -->
-        <div class="flex flex-col items-center space-y-2">
-          <img src="/tailwind.svg" alt="Tailwind CSS" class="h-32 lg:h-36" />
-          <p class="font-syne text-white">Tailwind CSS</p>
-        </div>
-
-        <!-- VueJS -->
-        <div class="flex flex-col items-center space-y-2">
-          <img src="/vueJS.svg" alt="VueJS" class="h-32 lg:h-36" />
-          <p class="font-syne text-white">VueJS</p>
-        </div>
-
-        <!-- Wordpress -->
-        <div class="flex flex-col items-center space-y-2">
-          <img src="/wordpress.svg" alt="Wordpress" class="h-32 lg:h-36" />
-          <p class="font-syne text-white">Wordpress</p>
+      <!-- Carrousel des compétences défilant -->
+      <div
+        ref="carouselContainer"
+        class="flex gap-8 overflow-x-auto scroll-smooth scrollbar-hide px-8"
+      >
+        <div
+          v-for="skill in skills"
+          :key="skill.id"
+          class="flex flex-col items-center space-y-2 shrink-0"
+          style="width: 150px;"
+        >
+          <ImgPb
+            :record="{ id: skill.id, collectionName: 'skills' }"
+            :filename="skill.logo"
+            width="128"
+            height="128"
+          />
+          <p class="font-syne text-white text-center">{{ skill.nom }}</p>
         </div>
       </div>
     </section>
   </div>
 </template>
+
+<style>
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+</style>
