@@ -92,7 +92,7 @@ const scrollRight = () => {
     </div>
 
     <!-- Section compétences -->
-    <section class="space-y-12 px-6 py-16 relative">
+    <section class="relative space-y-12 px-6 py-16">
       <h2 class="text-center font-syne text-2xl font-bold text-white lg:text-6xl">
         Parmi ce que je maîtrise...
       </h2>
@@ -103,26 +103,26 @@ const scrollRight = () => {
         class="absolute left-0 top-1/2 -translate-y-1/2 p-2 text-lg"
         aria-label="Scroll Left"
       >
-      &#x21E6;
+        &#x21E6;
       </button>
       <button
         @click="scrollRight"
         class="absolute right-0 top-1/2 -translate-y-1/2 p-2"
         aria-label="Scroll Right"
       >
-      &#x21E8;
+        &#x21E8;
       </button>
 
       <!-- Carrousel des compétences défilant -->
       <div
         ref="carouselContainer"
-        class="flex gap-8 overflow-x-auto scroll-smooth scrollbar-hide px-8"
+        class="scrollbar-hide flex gap-8 overflow-x-auto scroll-smooth px-8"
       >
         <div
           v-for="skill in skills"
           :key="skill.id"
-          class="flex flex-col items-center space-y-2 shrink-0"
-          style="width: 150px;"
+          class="flex shrink-0 flex-col items-center space-y-2"
+          style="width: 150px"
         >
           <ImgPb
             :record="{ id: skill.id, collectionName: 'skills' }"
@@ -130,7 +130,7 @@ const scrollRight = () => {
             width="128"
             height="128"
           />
-          <p class="font-syne text-white text-center">{{ skill.nom }}</p>
+          <p class="text-center font-syne text-white">{{ skill.nom }}</p>
         </div>
       </div>
     </section>

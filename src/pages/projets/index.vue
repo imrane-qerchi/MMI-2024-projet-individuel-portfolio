@@ -21,9 +21,9 @@ const listeProjets = await pb.collection('projets').getFullList({ sort: '-create
       <hr class="border-t-1 border-gray-500" />
     </div>
 
-<!-- Liste des projets -->
-<div class="grid grid-cols-1 gap-8 sm:grid-cols-2  xl:grid-cols-3">
-  <CardProjet v-for="projet in listeProjets" :key="projet.id" v-bind="projet" />
-</div>
+    <!-- Liste des projets -->
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3">
+      <CardProjet v-for="projet in listeProjets" :key="projet.id" v-bind="projet" />
+    </div>
   </div>
 </template>

@@ -1,2 +1,8 @@
+# Rediriger le domaine sans www vers www
+https://portfolio-imraneqrh.pockethost.io/* https://www.portfolio-imraneqrh.pockethost.io/:splat 301!
+
+# Redirection pour l'API
 /api/*  https://portfolio-imraneqrh.pockethost.io/api/:splat  200
+
+# Redirection catch-all pour les autres chemins
 /*  / 200

@@ -26,7 +26,7 @@ const closeMenu = () => {
         <img src="/logo-qrh.svg" alt="Logo QRH" class="h-12 lg:ml-10" />
       </router-link>
     </div>
-    
+
     <!-- Navigation pour Desktop -->
     <nav class="hidden lg:mr-10 lg:flex lg:items-center lg:space-x-12">
       <router-link to="/" class="font-syne text-lg text-gray-400 hover:text-white">
